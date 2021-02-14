@@ -1,15 +1,27 @@
 class_name Bullet
-extends RigidBody2D
+extends Area2D
 
 var disabled = false
+var velocity = Vector2.ZERO
 
-func _ready():
-	($Timer as Timer).start()
+func set_velocity(vec):
+	velocity = vec
 
+func _physics_process(delta):
+	position += velocity * delta
 
 func disable():
-	if disabled:
-		return
+	queue_free()
+	#if disabled:
+	#	return
 
-	($AnimationPlayer as AnimationPlayer).play("shutdown")
-	disabled = true
+	#($AnimationPlayer as AnimationPlayer).play("shutdown")
+	#disabled = true
+
+
+func _on_Bullet_area_entered(area):
+	disable()
+
+
+func _on_Bullet_body_entered(body):
+	disable()

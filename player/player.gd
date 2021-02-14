@@ -53,6 +53,7 @@ onready var sprite = $Sprite
 onready var sprite_smoke = sprite.get_node(@"Smoke")
 onready var animation_player = $AnimationPlayer
 onready var bullet_shoot = $BulletShoot
+onready var viewport = get_viewport()
 
 func _integrate_forces(s):
 	var lv = s.get_linear_velocity()
@@ -67,6 +68,8 @@ func _integrate_forces(s):
 	var jump = Input.is_action_pressed("jump")
 	var shoot = Input.is_action_pressed("shoot")
 	var spawn = Input.is_action_pressed("spawn")
+	var mouse_pos = get_global_mouse_position()
+	var mouse_dir = global_position.direction_to(mouse_pos)
 
 	if spawn:
 		call_deferred("_spawn_enemy_above")
@@ -89,7 +92,7 @@ func _integrate_forces(s):
 	# A good idea when implementing characters of all kinds,
 	# compensates for physics imprecision, as well as human reaction delay.
 	if shoot and not shooting:
-		call_deferred("_shot_bullet")
+		call_deferred("_shot_bullet", mouse_dir)
 	else:
 		shoot_time += step
 
@@ -203,7 +206,7 @@ func _integrate_forces(s):
 	s.set_linear_velocity(lv)
 
 
-func _shot_bullet():
+func _shot_bullet(dir):
 	shoot_time = 0
 	var bi = Bullet.instance()
 	var ss
@@ -211,18 +214,15 @@ func _shot_bullet():
 		ss = -1.0
 	else:
 		ss = 1.0
-	var pos = position + bullet_shoot.position * Vector2(ss, 1.0)
+	var pos = position + (ss * bullet_shoot.position) 
 
 	bi.position = pos
 	get_parent().add_child(bi)
 
-	bi.linear_velocity = Vector2(400.0 * ss, -40)
+	bi.set_velocity(dir * 300)
 
 	sprite_smoke.restart()
 	sound_shoot.play()
-
-	add_collision_exception_with(bi) # Make bullet and this not collide.
-
 
 func _spawn_enemy_above():
 	var e = Enemy.instance()
