@@ -13,7 +13,7 @@ var state = State.WALKING
 var direction = -1
 var anim = ""
 
-var Bullet = preload("res://player/bullet.gd")
+var Bullet = preload("res://player/player_bullet.gd")
 
 onready var rc_left = $RaycastLeft
 onready var rc_right = $RaycastRight

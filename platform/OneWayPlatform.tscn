@@ -6,6 +6,7 @@
 extents = Vector2( 50, 5 )
 
 [node name="OneWayPlatform" type="StaticBody2D"]
+collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

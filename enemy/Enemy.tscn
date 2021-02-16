@@ -124,6 +124,8 @@ scale_random = 1.0
 color_ramp = SubResource( 7 )
 
 [node name="Enemy" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 37
 mode = 2
 physics_material_override = SubResource( 1 )
 contacts_reported = 4

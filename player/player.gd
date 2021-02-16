@@ -44,7 +44,7 @@ var floor_h_velocity = 0.0
 var airborne_time = 1e20
 var shoot_time = 1e20
 
-var Bullet = preload("res://player/Bullet.tscn")
+var Bullet = preload("res://player/PlayerBullet.tscn")
 var Enemy = preload("res://enemy/Enemy.tscn")
 
 onready var sound_jump = $SoundJump
