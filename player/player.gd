@@ -2,7 +2,8 @@ class_name Player
 extends Actor
 
 const FLOOR_DETECT_DISTANCE = 20.0
-const SHOT_DELAY = 0.2
+const SHOT_DELAY = 0.3
+const SHOT_SPEED = 400
 
 var Bullet = preload("res://player/PlayerBullet.tscn")
 
@@ -83,7 +84,7 @@ func shot_bullet(dir):
 	bi.position = pos
 	get_parent().add_child(bi)
 
-	bi.set_velocity(dir * 300)
+	bi.set_velocity(dir * SHOT_SPEED)
 
 	sprite_smoke.restart()
 	sound_shoot.play()
@@ -94,6 +95,4 @@ func get_new_animation(is_shooting = false):
 		animation_new = "run" if abs(_velocity.x) > 0.1 else "idle"
 	else:
 		animation_new = "falling" if _velocity.y > 0 else "jumping"
-	if is_shooting:
-		animation_new += "_weapon"
 	return animation_new
