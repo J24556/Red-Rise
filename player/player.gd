@@ -29,6 +29,12 @@ func _physics_process(_delta):
 	_velocity = move_and_slide_with_snap(
 		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
 	)
+	
+	if is_on_platform:
+		for i in get_slide_count():
+			var collision = get_slide_collision(i)
+			if collision.collider.has_method("stand_on"):
+				collision.collider.stand_on()
 
 	# When the character’s move_dir changes, we want to to scale the Sprite accordingly to flip it.
 	# This will make Robi face left or right depending on the move_dir you move.

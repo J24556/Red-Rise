@@ -1,17 +1,24 @@
 extends StaticBody2D
 
+const HANG_TIME = .5
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 onready var animation_player = $AnimationPlayer
+onready var timer = $Timer
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	animation_player.play("crumble")
+var triggered = false
 
-func _physics_process(_delta):
+func stand_on():
+	if not triggered:
+		triggered = true
+		animation_player.play("crack")
+		timer.start(HANG_TIME)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "crumble":
+		queue_free()
+
+
+func _on_Timer_timeout():
+	#the crumble animation disables the platform's collider a little bit after starting
 	animation_player.play("crumble")
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
