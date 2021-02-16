@@ -190,7 +190,7 @@ motion = Vector2( 0, 70 )
 cycle = 5.0
 
 [node name="MovingPlatform 2" parent="Props" instance=ExtResource( 3 )]
-position = Vector2( 312.412, 272.772 )
+position = Vector2( 352.899, 280.856 )
 motion = Vector2( 150, 0 )
 cycle = 10.0
 
@@ -271,3 +271,6 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+
+[node name="OneWayPlatform" parent="." instance=ExtResource( 5 )]
+position = Vector2( 267.212, 347.299 )
