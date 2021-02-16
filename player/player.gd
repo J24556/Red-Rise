@@ -3,22 +3,27 @@ extends Actor
 
 const FLOOR_DETECT_DISTANCE = 20.0
 const SHOT_DELAY = 0.3
-const SHOT_SPEED = 400
+const SHOT_SPEED = 700
 
 var Bullet = preload("res://player/PlayerBullet.tscn")
 
 onready var platform_detector = $PlatformDetector
 onready var animation_player = $AnimationPlayer
 onready var sprite = $Sprite
-onready var sprite_smoke = sprite.get_node(@"Smoke")
-onready var bullet_shoot = $BulletShoot
+onready var sprite_smoke = $Sprite/ArmPivot/GunArm/Smoke
+onready var arm_pivot = $Sprite/ArmPivot
+onready var bullet_shoot = $Sprite/ArmPivot/GunArm/BulletShoot
 onready var shot_delay_timer = $ShotDelayTimer
 onready var sound_jump = $SoundJump
 onready var sound_shoot = $SoundShoot
 
 
 func _physics_process(_delta):
-	var mouse_dir = global_position.direction_to(get_global_mouse_position())
+	var mouse_pos = get_global_mouse_position()
+	var mouse_dir = global_position.direction_to(mouse_pos)
+	var mouse_arm_dir = arm_pivot.global_position.direction_to(mouse_pos)
+	var mouse_arm_angle = rad2deg(arm_pivot.global_position.angle_to_point(mouse_pos))
+
 	var move_dir = get_move_dir()
 
 	var is_jump_interrupted = Input.is_action_just_released("jump") and _velocity.y < 0.0
@@ -41,6 +46,11 @@ func _physics_process(_delta):
 	if mouse_dir.x != 0:
 		sprite.scale.x = 1 if mouse_dir.x > 0 else -1
 
+	if sprite.scale.x == 1:
+		arm_pivot.rotation_degrees = mouse_arm_angle + 180
+	else:
+		arm_pivot.rotation_degrees = (-1 * mouse_arm_angle)
+
 	# We use the sprite's scale to store Robi’s look move_dir which allows us to shoot
 	# bullets forward.
 	# There are many situations like these where you can reuse existing properties instead of
@@ -49,7 +59,7 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("shoot"):
 		is_shooting = true
 		if shot_delay_timer.is_stopped():
-			shot_bullet(mouse_dir)
+			shoot_bullet(mouse_arm_dir)
 			shot_delay_timer.start(SHOT_DELAY)
 
 
@@ -83,11 +93,10 @@ func calculate_move_velocity(
 		velocity.y *= 0.6
 	return velocity
 
-func shot_bullet(dir):
+func shoot_bullet(dir):
 	var bi = Bullet.instance()
-	var pos = position + (dir * bullet_shoot.position.x) 
 
-	bi.position = pos
+	bi.global_position = bullet_shoot.global_position
 	get_parent().add_child(bi)
 
 	bi.set_velocity(dir * SHOT_SPEED)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/characternogun.png" type="Texture" id=2]
 [ext_resource path="res://player/bullet.png" type="Texture" id=3]
 [ext_resource path="res://player/Bullet.wav" type="AudioStream" id=4]
+[ext_resource path="res://player/big_gun.png" type="Texture" id=5]
 [ext_resource path="res://audio/sound_jump.wav" type="AudioStream" id=9]
 
 [sub_resource type="Gradient" id=1]
@@ -103,9 +104,22 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 hframes = 5
 
-[node name="Smoke" type="Particles2D" parent="Sprite"]
+[node name="ArmPivot" type="Position2D" parent="Sprite"]
+position = Vector2( 4, 3.5 )
+rotation = 0.00698132
+
+[node name="GunArm" type="Sprite" parent="Sprite/ArmPivot"]
+show_behind_parent = true
+position = Vector2( 10, -3.5 )
+z_index = -1
+texture = ExtResource( 5 )
+
+[node name="BulletShoot" type="Position2D" parent="Sprite/ArmPivot/GunArm"]
+position = Vector2( 9, 0 )
+
+[node name="Smoke" type="Particles2D" parent="Sprite/ArmPivot/GunArm"]
 self_modulate = Color( 1, 1, 1, 0.26702 )
-position = Vector2( 10, 1.5 )
+position = Vector2( 9, 0 )
 rotation = -1.45648
 emitting = false
 lifetime = 0.3
@@ -127,10 +141,8 @@ zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
 limit_top = 0
 
-[node name="BulletShoot" type="Position2D" parent="."]
-position = Vector2( 15, 0 )
-
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 2 )
 shape = SubResource( 8 )
 
