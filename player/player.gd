@@ -1,220 +1,84 @@
 class_name Player
-extends RigidBody2D
+extends Actor
 
-# Character Demo, written by Juan Linietsky.
-#
-#  Implementation of a 2D Character controller.
-#  This implementation uses the physics engine for
-#  controlling a character, in a very similar way
-#  than a 3D character controller would be implemented.
-#
-#  Using the physics engine for this has the main advantages:
-#    - Easy to write.
-#    - Interaction with other physics-based objects is free
-#    - Only have to deal with the object linear velocity, not position
-#    - All collision/area framework available
-#
-#  But also has the following disadvantages:
-#    - Objects may bounce a little bit sometimes
-#    - Going up ramps sends the chracter flying up, small hack is needed.
-#    - A ray collider is needed to avoid sliding down on ramps and
-#      undesiderd bumps, small steps and rare numerical precision errors.
-#      (another alternative may be to turn on friction when the character is not moving).
-#    - Friction cant be used, so floor velocity must be considered
-#      for moving platforms.
-
-const WALK_ACCEL = 500.0
-const WALK_DEACCEL = 500.0
-const WALK_MAX_VELOCITY = 140.0
-const AIR_ACCEL = 100.0
-const AIR_DEACCEL = 100.0
-const JUMP_VELOCITY = 380
-const STOP_JUMP_FORCE = 450.0
-const MAX_SHOOT_POSE_TIME = 0.3
-const MAX_FLOOR_AIRBORNE_TIME = 0.15
-
-var anim = ""
-var siding_left = false
-var jumping = false
-var stopping_jump = false
-var shooting = false
-
-var floor_h_velocity = 0.0
-
-var airborne_time = 1e20
-var shoot_time = 1e20
+const FLOOR_DETECT_DISTANCE = 20.0
+const SHOT_DELAY = 0.2
 
 var Bullet = preload("res://player/PlayerBullet.tscn")
-var Enemy = preload("res://enemy/Enemy.tscn")
 
-onready var sound_jump = $SoundJump
-onready var sound_shoot = $SoundShoot
+onready var platform_detector = $PlatformDetector
+onready var animation_player = $AnimationPlayer
 onready var sprite = $Sprite
 onready var sprite_smoke = sprite.get_node(@"Smoke")
-onready var animation_player = $AnimationPlayer
 onready var bullet_shoot = $BulletShoot
-onready var viewport = get_viewport()
-
-func _integrate_forces(s):
-	var lv = s.get_linear_velocity()
-	var step = s.get_step()
-
-	var new_anim = anim
-	var new_siding_left = siding_left
-
-	# Get player input.
-	var move_left = Input.is_action_pressed("move_left")
-	var move_right = Input.is_action_pressed("move_right")
-	var jump = Input.is_action_pressed("jump")
-	var shoot = Input.is_action_pressed("shoot")
-	var spawn = Input.is_action_pressed("spawn")
-	var mouse_pos = get_global_mouse_position()
-	var mouse_dir = global_position.direction_to(mouse_pos)
-
-	if spawn:
-		call_deferred("_spawn_enemy_above")
-
-	# Deapply prev floor velocity.
-	lv.x -= floor_h_velocity
-	floor_h_velocity = 0.0
-
-	# Find the floor (a contact with upwards facing collision normal).
-	var found_floor = false
-	var floor_index = -1
-
-	for x in range(s.get_contact_count()):
-		var ci = s.get_contact_local_normal(x)
-
-		if ci.dot(Vector2(0, -1)) > 0.6:
-			found_floor = true
-			floor_index = x
-
-	# A good idea when implementing characters of all kinds,
-	# compensates for physics imprecision, as well as human reaction delay.
-	if shoot and not shooting:
-		call_deferred("_shot_bullet", mouse_dir)
-	else:
-		shoot_time += step
-
-	if found_floor:
-		airborne_time = 0.0
-	else:
-		airborne_time += step # Time it spent in the air.
-
-	var on_floor = airborne_time < MAX_FLOOR_AIRBORNE_TIME
-
-	# Process jump.
-	if jumping:
-		if lv.y > 0:
-			# Set off the jumping flag if going down.
-			jumping = false
-		elif not jump:
-			stopping_jump = true
-
-		if stopping_jump:
-			lv.y += STOP_JUMP_FORCE * step
-
-	if on_floor:
-		# Process logic when character is on floor.
-		if move_left and not move_right:
-			if lv.x > -WALK_MAX_VELOCITY:
-				lv.x -= WALK_ACCEL * step
-		elif move_right and not move_left:
-			if lv.x < WALK_MAX_VELOCITY:
-				lv.x += WALK_ACCEL * step
-		else:
-			var xv = abs(lv.x)
-			xv -= WALK_DEACCEL * step
-			if xv < 0:
-				xv = 0
-			lv.x = sign(lv.x) * xv
-
-		# Check jump.
-		if not jumping and jump:
-			lv.y = -JUMP_VELOCITY
-			jumping = true
-			stopping_jump = false
-			sound_jump.play()
-
-		# Check siding.
-		if lv.x < 0 and move_left:
-			new_siding_left = true
-		elif lv.x > 0 and move_right:
-			new_siding_left = false
-		if jumping:
-			new_anim = "jumping"
-		elif abs(lv.x) < 0.1:
-			if shoot_time < MAX_SHOOT_POSE_TIME:
-				new_anim = "idle_weapon"
-			else:
-				new_anim = "idle"
-		else:
-			if shoot_time < MAX_SHOOT_POSE_TIME:
-				new_anim = "run_weapon"
-			else:
-				new_anim = "run"
-	else:
-		# Process logic when the character is in the air.
-		if move_left and not move_right:
-			if lv.x > -WALK_MAX_VELOCITY:
-				lv.x -= AIR_ACCEL * step
-		elif move_right and not move_left:
-			if lv.x < WALK_MAX_VELOCITY:
-				lv.x += AIR_ACCEL * step
-		else:
-			var xv = abs(lv.x)
-			xv -= AIR_DEACCEL * step
-
-			if xv < 0:
-				xv = 0
-			lv.x = sign(lv.x) * xv
-
-		if lv.y < 0:
-			if shoot_time < MAX_SHOOT_POSE_TIME:
-				new_anim = "jumping_weapon"
-			else:
-				new_anim = "jumping"
-		else:
-			if shoot_time < MAX_SHOOT_POSE_TIME:
-				new_anim = "falling_weapon"
-			else:
-				new_anim = "falling"
-
-	# Update siding.
-	if new_siding_left != siding_left:
-		if new_siding_left:
-			sprite.scale.x = -1
-		else:
-			sprite.scale.x = 1
-
-		siding_left = new_siding_left
-
-	# Change animation.
-	if new_anim != anim:
-		anim = new_anim
-		animation_player.play(anim)
-
-	shooting = shoot
-
-	# Apply floor velocity.
-	if found_floor:
-		floor_h_velocity = s.get_contact_collider_velocity_at_position(floor_index).x
-		lv.x += floor_h_velocity
-
-	# Finally, apply gravity and set back the linear velocity.
-	lv += s.get_total_gravity() * step
-	s.set_linear_velocity(lv)
+onready var shot_delay_timer = $ShotDelayTimer
+onready var sound_jump = $SoundJump
+onready var sound_shoot = $SoundShoot
 
 
-func _shot_bullet(dir):
-	shoot_time = 0
+func _physics_process(_delta):
+	var mouse_dir = global_position.direction_to(get_global_mouse_position())
+	var move_dir = get_move_dir()
+
+	var is_jump_interrupted = Input.is_action_just_released("jump") and _velocity.y < 0.0
+	_velocity = calculate_move_velocity(_velocity, move_dir, speed, is_jump_interrupted)
+
+	var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if move_dir.y == 0.0 else Vector2.ZERO
+	var is_on_platform = platform_detector.is_colliding()
+	_velocity = move_and_slide_with_snap(
+		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
+	)
+
+	# When the character’s move_dir changes, we want to to scale the Sprite accordingly to flip it.
+	# This will make Robi face left or right depending on the move_dir you move.
+	if mouse_dir.x != 0:
+		sprite.scale.x = 1 if mouse_dir.x > 0 else -1
+
+	# We use the sprite's scale to store Robi’s look move_dir which allows us to shoot
+	# bullets forward.
+	# There are many situations like these where you can reuse existing properties instead of
+	# creating new variables.
+	var is_shooting = false
+	if Input.is_action_pressed("shoot"):
+		is_shooting = true
+		if shot_delay_timer.is_stopped():
+			shot_bullet(mouse_dir)
+			shot_delay_timer.start(SHOT_DELAY)
+
+
+	var animation = get_new_animation(is_shooting)
+	if animation != animation_player.current_animation:
+		animation_player.play(animation)
+
+
+func get_move_dir():
+	return Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		-1 if is_on_floor() and Input.is_action_just_pressed("jump") else 0
+	)
+
+
+# This function calculates a new velocity whenever you need it.
+# It allows you to interrupt jumps.
+func calculate_move_velocity(
+		linear_velocity,
+		move_dir,
+		speed,
+		is_jump_interrupted
+	):
+	var velocity = linear_velocity
+	velocity.x = speed.x * move_dir.x
+	if move_dir.y != 0.0:
+		velocity.y = speed.y * move_dir.y
+	if is_jump_interrupted:
+		# Decrease the Y velocity by multiplying it, but don't set it to 0
+		# as to not be too abrupt.
+		velocity.y *= 0.6
+	return velocity
+
+func shot_bullet(dir):
 	var bi = Bullet.instance()
-	var ss
-	if siding_left:
-		ss = -1.0
-	else:
-		ss = 1.0
-	var pos = position + (ss * bullet_shoot.position) 
+	var pos = position + (dir * bullet_shoot.position.x) 
 
 	bi.position = pos
 	get_parent().add_child(bi)
@@ -224,7 +88,12 @@ func _shot_bullet(dir):
 	sprite_smoke.restart()
 	sound_shoot.play()
 
-func _spawn_enemy_above():
-	var e = Enemy.instance()
-	e.position = position + 50 * Vector2.UP
-	get_parent().add_child(e)
+func get_new_animation(is_shooting = false):
+	var animation_new = ""
+	if is_on_floor():
+		animation_new = "run" if abs(_velocity.x) > 0.1 else "idle"
+	else:
+		animation_new = "falling" if _velocity.y > 0 else "jumping"
+	if is_shooting:
+		animation_new += "_weapon"
+	return animation_new

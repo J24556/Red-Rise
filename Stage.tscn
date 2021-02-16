@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://coin/Coin.tscn" type="PackedScene" id=2]
@@ -11,9 +11,9 @@
 [ext_resource path="res://audio/music.ogg" type="AudioStream" id=9]
 
 [sub_resource type="PhysicsMaterial" id=1]
-friction = 0.0
 
 [sub_resource type="PhysicsMaterial" id=2]
+friction = 0.0
 
 [sub_resource type="PhysicsMaterial" id=3]
 friction = 0.0
@@ -22,9 +22,9 @@ friction = 0.0
 friction = 0.0
 
 [sub_resource type="PhysicsMaterial" id=5]
-friction = 0.0
 
 [sub_resource type="PhysicsMaterial" id=6]
+friction = 0.0
 
 [sub_resource type="PhysicsMaterial" id=7]
 friction = 0.0
@@ -39,9 +39,6 @@ friction = 0.0
 friction = 0.0
 
 [sub_resource type="PhysicsMaterial" id=11]
-friction = 0.0
-
-[sub_resource type="PhysicsMaterial" id=12]
 friction = 0.0
 
 [node name="Stage" type="Node2D"]
@@ -210,53 +207,52 @@ position = Vector2( 463.849, 560.405 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 125.842, 522.8 )
-physics_material_override = SubResource( 1 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy1" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 417.332, 654.8 )
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 1 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 353.832, 612.525 )
-physics_material_override = SubResource( 3 )
+physics_material_override = SubResource( 2 )
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 562.605, 526.53 )
-physics_material_override = SubResource( 4 )
+physics_material_override = SubResource( 3 )
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 646.055, 529.62 )
-physics_material_override = SubResource( 5 )
+physics_material_override = SubResource( 4 )
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 803.69, 461.62 )
-physics_material_override = SubResource( 6 )
+physics_material_override = SubResource( 5 )
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 1293.45, 469.53 )
-physics_material_override = SubResource( 7 )
+physics_material_override = SubResource( 6 )
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 728.8, 344.371 )
-physics_material_override = SubResource( 8 )
+physics_material_override = SubResource( 7 )
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 596.815, 230.191 )
-physics_material_override = SubResource( 9 )
+physics_material_override = SubResource( 8 )
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 1714.86, 270.432 )
-physics_material_override = SubResource( 10 )
+physics_material_override = SubResource( 9 )
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 1773.1, 678.095 )
-physics_material_override = SubResource( 11 )
+physics_material_override = SubResource( 10 )
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 1203.31, 407.557 )
-physics_material_override = SubResource( 12 )
+physics_material_override = SubResource( 11 )
 
 [node name="ParallaxBg" parent="." instance=ExtResource( 8 )]
 
