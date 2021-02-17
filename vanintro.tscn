@@ -1,23 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://van_life1.png" type="Texture" id=2]
-[ext_resource path="res://Tileset.tres" type="TileSet" id=4]
 
-[node name="Node2D" type="Node2D"]
-position = Vector2( 192.822, 170.574 )
-
-[node name="van_life1" type="Sprite" parent="."]
-position = Vector2( 6.82529, -13.5789 )
-texture = ExtResource( 2 )
-
-[node name="TileMap" type="TileMap" parent="van_life1"]
-visible = false
-position = Vector2( -6.82529, 13.5789 )
-tile_set = ExtResource( 4 )
-cell_size = Vector2( 4, 2 )
-format = 1
-tile_data = PoolIntArray( -1703988, 536870913, 0, -1769431, 536870913, 0, -1638371, 536870913, 0, -851927, 536870913, 0, -720948, 536870913, 0, -655331, 536870913, 0, 131113, 536870913, 0, 262092, 536870913, 0, 1114153, 536870913, 0, 1245132, 536870913, 0, 1966099, 536870924, 0, 2031643, 536870912, 0, 2031651, 536870912, 0, 2228176, 536870913, 0, 2228184, 536870912, 0, 2228192, 536870912, 0, 2228200, 536870912, 0, 2228208, 536870912, 0, 2228216, 536870912, 0, 2162688, 536870912, 0, 2162696, 536870912, 0, 2162702, 536870912, 0, 2162709, 536870927, 0 )
+[node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -144.876, 28.1831 )
+position = Vector2( 111.839, 113.521 )
+
+[node name="Van" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Van"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Van"]
+polygon = PoolVector2Array( 357.052, 83.7651, 373.916, 136.517, 356.989, 136.962, 339.616, 151.662, 339.616, 151.662, 351.644, 164.58, 351.644, 177.944, 297.299, 177.498, 280.817, 182.398, 17.1111, 182.844, 17.5566, 79.9447, 42.0563, 50.5451, 193.064, 50.5451, 193.064, 30.0544, 5.52945, 29.1635, 8.20214, 206.007, 392.625, 200.661, 388.17, 29.6089, 193.871, 29.8246, 193.785, 50.9909, 280.091, 50.7682, 284.156, 53.1068, 283.933, 79.2769, 279.2, 83.7314 )

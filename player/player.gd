@@ -4,16 +4,21 @@ extends Actor
 const FLOOR_DETECT_DISTANCE = 20.0
 const SHOT_DELAY = 0.3
 const SHOT_SPEED = 700
+const GUN_PUT_AWAY_TIME = 0.6
 
 var Bullet = preload("res://player/PlayerBullet.tscn")
+var sprite_no_arm = preload("res://player/characternogun.png")
+var sprite_with_arm = preload("res://player/characternogun.png")
 
 onready var platform_detector = $PlatformDetector
 onready var animation_player = $AnimationPlayer
 onready var sprite = $Sprite
 onready var sprite_smoke = $Sprite/ArmPivot/GunArm/Smoke
 onready var arm_pivot = $Sprite/ArmPivot
+onready var gun_arm = $Sprite/ArmPivot/GunArm
 onready var bullet_shoot = $Sprite/ArmPivot/GunArm/BulletShoot
 onready var shot_delay_timer = $ShotDelayTimer
+onready var shoot_anim_timer = $ShootAnimTimer
 onready var sound_jump = $SoundJump
 onready var sound_shoot = $SoundShoot
 
@@ -40,30 +45,39 @@ func _physics_process(_delta):
 			var collision = get_slide_collision(i)
 			if collision.collider.has_method("stand_on"):
 				collision.collider.stand_on()
+	
+	var shoot_anim = not shoot_anim_timer.is_stopped()
+	var is_shooting = false
+	if Input.is_action_pressed("shoot"):
+		shoot_anim_timer.start(GUN_PUT_AWAY_TIME)
+		if shot_delay_timer.is_stopped():
+			is_shooting = true
 
-	# When the character’s move_dir changes, we want to to scale the Sprite accordingly to flip it.
-	# This will make Robi face left or right depending on the move_dir you move.
-	if mouse_dir.x != 0:
-		sprite.scale.x = 1 if mouse_dir.x > 0 else -1
+	if shoot_anim:
+		sprite.texture = sprite_no_arm
+		gun_arm.visible = true
+		if mouse_dir.x != 0:
+			sprite.scale.x = 1 if mouse_dir.x > 0 else -1
+	else:
+		sprite.texture = sprite_with_arm
+		gun_arm.visible = false
+		if move_dir.x != 0:
+			sprite.scale.x = 1 if move_dir.x > 0 else -1
+
+
 
 	if sprite.scale.x == 1:
 		arm_pivot.rotation_degrees = mouse_arm_angle + 180
 	else:
 		arm_pivot.rotation_degrees = (-1 * mouse_arm_angle)
 
-	# We use the sprite's scale to store Robi’s look move_dir which allows us to shoot
-	# bullets forward.
-	# There are many situations like these where you can reuse existing properties instead of
-	# creating new variables.
-	var is_shooting = false
-	if Input.is_action_pressed("shoot"):
-		is_shooting = true
-		if shot_delay_timer.is_stopped():
-			shoot_bullet(mouse_arm_dir)
-			shot_delay_timer.start(SHOT_DELAY)
+
+	if is_shooting:
+		shoot_bullet(mouse_arm_dir)
+		shot_delay_timer.start(SHOT_DELAY)
 
 
-	var animation = get_new_animation(is_shooting)
+	var animation = get_new_animation()
 	if animation != animation_player.current_animation:
 		animation_player.play(animation)
 
@@ -75,8 +89,6 @@ func get_move_dir():
 	)
 
 
-# This function calculates a new velocity whenever you need it.
-# It allows you to interrupt jumps.
 func calculate_move_velocity(
 		linear_velocity,
 		move_dir,
@@ -88,8 +100,6 @@ func calculate_move_velocity(
 	if move_dir.y != 0.0:
 		velocity.y = speed.y * move_dir.y
 	if is_jump_interrupted:
-		# Decrease the Y velocity by multiplying it, but don't set it to 0
-		# as to not be too abrupt.
 		velocity.y *= 0.6
 	return velocity
 
@@ -104,7 +114,7 @@ func shoot_bullet(dir):
 	sprite_smoke.restart()
 	sound_shoot.play()
 
-func get_new_animation(is_shooting = false):
+func get_new_animation():
 	var animation_new = ""
 	if is_on_floor():
 		animation_new = "run" if abs(_velocity.x) > 0.1 else "idle"
