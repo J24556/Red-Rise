@@ -165,8 +165,5 @@ cast_to = Vector2( 0, 17 )
 [node name="ShotDelayTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="AngerTime" type="Timer" parent="."]
-wait_time = 2.0
-
 [node name="ShootAnimTimer" type="Timer" parent="."]
 one_shot = true
