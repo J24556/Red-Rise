@@ -1,18 +1,26 @@
-extends KinematicBody2D
+extends Area2D
 
+const SPEED = 2
+const BUBBLE_TIME = .1
+const EDGE = 5
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var LavaBubble = preload("res://Lava/LavaBubble.tscn")
 
+onready var timer = $Timer
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	randomize()
+	timer.start(BUBBLE_TIME)
 
 func _physics_process(delta):
-	move_and_slide(Vector2(0, -2))
+	position.y += -1 * SPEED * delta
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+func spawn_bubble():
+	var bubble = LavaBubble.instance()
+	bubble.position = Vector2(rand_range(0 - EDGE, 400 - 16 + EDGE), -15)
+	add_child(bubble)
+
+
+func _on_Timer_timeout():
+	spawn_bubble()

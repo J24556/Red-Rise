@@ -7,10 +7,10 @@
 [node name="World" type="Node2D"]
 
 [node name="OneWayPlatform" parent="." instance=ExtResource( 2 )]
-position = Vector2( 117.214, 640.421 )
+position = Vector2( 192.199, 639.635 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 117.963, 600.978 )
+position = Vector2( 197.952, 578.181 )
 
 [node name="Lava" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 715.972 )
