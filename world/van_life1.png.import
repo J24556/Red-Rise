@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RED1.png-1ed40322c3c436518b1549e76d2cc1c7.stex"
+path="res://.import/van_life1.png-76730a807d37220db859acfb040ca3af.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RED/RED1.png"
-dest_files=[ "res://.import/RED1.png-1ed40322c3c436518b1549e76d2cc1c7.stex" ]
+source_file="res://world/van_life1.png"
+dest_files=[ "res://.import/van_life1.png-76730a807d37220db859acfb040ca3af.stex" ]
 
 [params]
 

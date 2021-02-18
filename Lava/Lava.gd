@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 const SPEED = 2
 const BUBBLE_TIME = .1
@@ -10,7 +10,7 @@ onready var timer = $Timer
 
 func _ready():
 	randomize()
-	#timer.start(BUBBLE_TIME)
+	timer.start(BUBBLE_TIME)
 
 func _physics_process(delta):
 	position.y += -1 * SPEED * delta
