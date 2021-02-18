@@ -7,6 +7,7 @@ const EDGE = 5
 onready var LavaBubble = preload("res://Lava/LavaBubble.tscn")
 
 onready var timer = $Timer
+onready var pool = $Pool
 
 func _ready():
 	randomize()
@@ -19,7 +20,7 @@ func _physics_process(delta):
 func spawn_bubble():
 	var bubble = LavaBubble.instance()
 	bubble.position = Vector2(rand_range(0 - EDGE, 400 - 16 + EDGE), -15)
-	add_child(bubble)
+	pool.add_child(bubble)
 
 
 func _on_Timer_timeout():

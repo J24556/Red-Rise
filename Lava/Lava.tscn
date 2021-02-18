@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Lava/lava_rim.png" type="Texture" id=1]
-[ext_resource path="res://Lava/lava_blue.png" type="Texture" id=2]
+[ext_resource path="res://Lava/lava_base.png" type="Texture" id=1]
+[ext_resource path="res://Lava/gradient.png" type="Texture" id=2]
 [ext_resource path="res://Lava/Lava.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -11,21 +11,24 @@ extents = Vector2( 210, 140 )
 z_index = 10
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 210, 140 )
-shape = SubResource( 1 )
-
 [node name="Pool" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+position = Vector2( 7.62939e-06, 0 )
+z_as_relative = false
+texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 420, 280 )
 
-[node name="lava_rim" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 420, 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 210, 140 )
+shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 210, 30 )
+texture = ExtResource( 2 )
+color = Color( 0.156863, 0.360784, 0.768627, 1 )
+energy = 1.25
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
