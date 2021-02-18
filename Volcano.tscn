@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://platform/OneWayPlatform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Lava/Lava.tscn" type="PackedScene" id=3]
+
+[node name="World" type="Node2D"]
+
+[node name="OneWayPlatform" parent="." instance=ExtResource( 2 )]
+position = Vector2( 117.214, 640.421 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 117.963, 600.978 )
+
+[node name="Lava" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 715.972 )
