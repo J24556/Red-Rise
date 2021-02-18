@@ -272,463 +272,490 @@ script = ExtResource( 12 )
 position = Vector2( -0.0743256, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 48, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 96, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 144, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 192, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 240, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 287.76, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 335.76, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 383.76, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 431.76, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 479.76, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite60" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -527.747, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite61" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -479.747, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite62" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -431.747, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite63" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -383.747, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite64" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -335.747, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite65" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -287.747, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite66" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -239.986, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite67" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -191.986, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite68" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -143.986, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite69" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -95.9865, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite70" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( -47.9864, 700.074 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite12" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 527.76, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite13" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 575.904, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite14" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 623.904, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite15" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 671.904, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite16" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 719.904, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite17" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 767.904, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite18" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 815.904, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite19" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 863.665, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite20" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 911.665, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite21" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 959.665, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite22" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1007.66, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite23" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1055.66, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite24" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1103.66, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite25" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1151.53, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite26" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1199.53, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite27" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1247.53, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite28" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1295.53, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite29" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1343.53, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite30" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1391.53, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite31" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1439.29, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite32" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1487.29, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite33" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1535.29, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite34" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1583.29, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite35" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1631.29, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite36" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1679.29, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite37" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1727.43, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite38" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1775.43, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite39" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1823.43, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite40" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1871.43, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite41" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1919.43, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite42" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 1967.43, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite43" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2015.19, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite44" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2063.19, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite45" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2111.19, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite46" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2159.19, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite47" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2207.19, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite48" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2255.19, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite49" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2303.22, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite50" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2351.22, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite51" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2399.22, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite52" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2447.22, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite53" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2495.22, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite54" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2542.98, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite55" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2590.98, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite56" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2638.98, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite57" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2686.98, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="AnimatedSprite58" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2734.98, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite59" type="AnimatedSprite" parent="Blue Lava"]
 position = Vector2( 2782.98, 700 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="Sprite" type="Sprite" parent="Blue Lava"]

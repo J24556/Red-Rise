@@ -87,6 +87,7 @@ func _physics_process(_delta):
 	if angry:
 		SHOT_DELAY = .07
 		sprite.texture = sprite_chad_when_stock_go_down
+		gun_arm.visible = true
 	else:
 		SHOT_DELAY = .3
 
