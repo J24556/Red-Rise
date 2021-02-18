@@ -1,16 +1,22 @@
 class_name Player
 extends Actor
 
+const RUN_SPEED = 150
+const JUMP_SPEED = 350
+const BASE_SPEED = Vector2(RUN_SPEED, JUMP_SPEED)
 const FLOOR_DETECT_DISTANCE = 20.0
 const SHOT_DELAY = 0.3
 const SHOT_SPEED = 700
 const GUN_PUT_AWAY_TIME = 0.6
 
 var Bullet = preload("res://player/PlayerBullet.tscn")
-var sprite_no_arm = preload("res://player/characternogun.png")
-var sprite_with_arm = preload("res://player/characternogun.png")
+var sprite_no_arm = preload("res://player/characteronearm.png")
+var sprite_with_arm = preload("res://player/charactertwoarms.png")
+
+onready var speed = BASE_SPEED
 
 onready var platform_detector = $PlatformDetector
+onready var platform_detector2 = $PlatformDetector2
 onready var animation_player = $AnimationPlayer
 onready var sprite = $Sprite
 onready var sprite_smoke = $Sprite/ArmPivot/GunArm/Smoke
@@ -34,13 +40,14 @@ func _physics_process(_delta):
 	var is_jump_interrupted = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	_velocity = calculate_move_velocity(_velocity, move_dir, speed, is_jump_interrupted)
 
+
 	var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if move_dir.y == 0.0 else Vector2.ZERO
-	var is_on_platform = platform_detector.is_colliding()
+	var is_on_platform = platform_detector.is_colliding() or platform_detector2.is_colliding()
 	_velocity = move_and_slide_with_snap(
-		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
+		_velocity, snap_vector, FLOOR_NORMAL, is_on_platform, 4, 1.396, false
 	)
 	
-	if is_on_platform:
+	if is_on_floor():
 		for i in get_slide_count():
 			var collision = get_slide_collision(i)
 			if collision.collider.has_method("stand_on"):
@@ -64,23 +71,18 @@ func _physics_process(_delta):
 		if move_dir.x != 0:
 			sprite.scale.x = 1 if move_dir.x > 0 else -1
 
-
-
 	if sprite.scale.x == 1:
 		arm_pivot.rotation_degrees = mouse_arm_angle + 180
 	else:
 		arm_pivot.rotation_degrees = (-1 * mouse_arm_angle)
 
-
 	if is_shooting:
 		shoot_bullet(mouse_arm_dir)
 		shot_delay_timer.start(SHOT_DELAY)
 
-
 	var animation = get_new_animation()
 	if animation != animation_player.current_animation:
 		animation_player.play(animation)
-
 
 func get_move_dir():
 	return Vector2(
