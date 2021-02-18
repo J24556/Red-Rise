@@ -5,12 +5,13 @@ const RUN_SPEED = 150
 const JUMP_SPEED = 350
 const BASE_SPEED = Vector2(RUN_SPEED, JUMP_SPEED)
 const FLOOR_DETECT_DISTANCE = 20.0
-const SHOT_DELAY = 0.3
+var SHOT_DELAY = 0.3 #now why make that a const?
 const SHOT_SPEED = 700
 const GUN_PUT_AWAY_TIME = 0.6
 
 var Bullet = preload("res://player/PlayerBullet.tscn")
 var sprite_no_arm = preload("res://player/characteronearm.png")
+var sprite_chad_when_stock_go_down = preload("res://player/chad_in_the_red.png")
 var sprite_with_arm = preload("res://player/charactertwoarms.png")
 
 onready var speed = BASE_SPEED
@@ -25,11 +26,22 @@ onready var gun_arm = $Sprite/ArmPivot/GunArm
 onready var bullet_shoot = $Sprite/ArmPivot/GunArm/BulletShoot
 onready var shot_delay_timer = $ShotDelayTimer
 onready var shoot_anim_timer = $ShootAnimTimer
+onready var anger_timer = $AngerTime
 onready var sound_jump = $SoundJump
 onready var sound_shoot = $SoundShoot
 
-
+var angry = false
+var latest_instigator
+func SET_ANGRY(on , instg):
+	if(on):
+		latest_instigator = instg
+		angry = on
+	elif(instg == latest_instigator):
+		angry = on
+		
+		
 func _physics_process(_delta):
+	print(angry)
 	var mouse_pos = get_global_mouse_position()
 	var mouse_dir = global_position.direction_to(mouse_pos)
 	var mouse_arm_dir = arm_pivot.global_position.direction_to(mouse_pos)
@@ -70,6 +82,13 @@ func _physics_process(_delta):
 		gun_arm.visible = false
 		if move_dir.x != 0:
 			sprite.scale.x = 1 if move_dir.x > 0 else -1
+			
+	#ANGRY MODE HERE HERE HERE HERE'S OUR GIMICK
+	if angry:
+		SHOT_DELAY = .07
+		sprite.texture = sprite_chad_when_stock_go_down
+	else:
+		SHOT_DELAY = .3
 
 	if sprite.scale.x == 1:
 		arm_pivot.rotation_degrees = mouse_arm_angle + 180

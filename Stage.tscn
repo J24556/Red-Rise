@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://coin/Coin.tscn" type="PackedScene" id=2]
@@ -9,36 +9,95 @@
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
 [ext_resource path="res://audio/music.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Lava/blue_lava_bubble.png" type="Texture" id=10]
+[ext_resource path="res://Lava/Base Lava Color - Blue.png" type="Texture" id=11]
+[ext_resource path="res://Lava/Lava.gd" type="Script" id=12]
 
-[sub_resource type="PhysicsMaterial" id=1]
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 16, 32 )
 
-[sub_resource type="PhysicsMaterial" id=2]
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 10 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 10 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 10 )
+region = Rect2( 80, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 10 )
+region = Rect2( 96, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 10 )
+region = Rect2( 112, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 10 )
+region = Rect2( 128, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 10 )
+region = Rect2( 144, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 10 )
+region = Rect2( 160, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 10 )
+region = Rect2( 176, 0, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="PhysicsMaterial" id=14]
+
+[sub_resource type="PhysicsMaterial" id=15]
 friction = 0.0
 
-[sub_resource type="PhysicsMaterial" id=3]
+[sub_resource type="PhysicsMaterial" id=16]
 friction = 0.0
 
-[sub_resource type="PhysicsMaterial" id=4]
+[sub_resource type="PhysicsMaterial" id=17]
 friction = 0.0
 
-[sub_resource type="PhysicsMaterial" id=5]
+[sub_resource type="PhysicsMaterial" id=18]
 
-[sub_resource type="PhysicsMaterial" id=6]
+[sub_resource type="PhysicsMaterial" id=19]
 friction = 0.0
 
-[sub_resource type="PhysicsMaterial" id=7]
+[sub_resource type="PhysicsMaterial" id=20]
 friction = 0.0
 
-[sub_resource type="PhysicsMaterial" id=8]
+[sub_resource type="PhysicsMaterial" id=21]
 friction = 0.0
 
-[sub_resource type="PhysicsMaterial" id=9]
+[sub_resource type="PhysicsMaterial" id=22]
 friction = 0.0
 
-[sub_resource type="PhysicsMaterial" id=10]
+[sub_resource type="PhysicsMaterial" id=23]
 friction = 0.0
 
-[sub_resource type="PhysicsMaterial" id=11]
+[sub_resource type="PhysicsMaterial" id=24]
 friction = 0.0
 
 [node name="Stage" type="Node2D"]
@@ -205,6 +264,505 @@ position = Vector2( 1201.4, 424.76 )
 [node name="OneWayPlatform" parent="Props" instance=ExtResource( 5 )]
 position = Vector2( 463.849, 560.405 )
 
+[node name="Blue Lava" type="KinematicBody2D" parent="."]
+z_index = 10
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -0.0743256, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 48, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 96, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 144, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 192, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 240, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 287.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 335.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 383.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 431.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 479.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite60" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -527.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite61" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -479.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite62" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -431.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite63" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -383.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite64" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -335.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite65" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -287.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite66" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -239.986, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite67" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -191.986, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite68" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -143.986, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite69" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -95.9865, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite70" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( -47.9864, 700.074 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 527.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite13" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 575.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite14" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 623.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite15" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 671.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite16" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 719.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite17" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 767.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite18" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 815.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite19" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 863.665, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite20" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 911.665, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite21" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 959.665, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite22" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1007.66, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite23" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1055.66, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite24" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1103.66, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite25" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1151.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite26" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1199.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite27" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1247.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite28" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1295.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite29" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1343.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite30" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1391.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite31" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1439.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite32" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1487.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite33" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1535.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite34" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1583.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite35" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1631.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite36" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1679.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite37" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1727.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite38" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1775.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite39" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1823.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite40" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1871.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite41" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1919.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite42" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 1967.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite43" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2015.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite44" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2063.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite45" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2111.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 5
+playing = true
+
+[node name="AnimatedSprite46" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2159.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite47" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2207.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 5
+playing = true
+
+[node name="AnimatedSprite48" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2255.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 5
+playing = true
+
+[node name="AnimatedSprite49" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2303.22, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite50" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2351.22, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite51" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2399.22, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite52" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2447.22, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite53" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2495.22, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite54" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2542.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite55" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2590.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite56" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2638.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 5
+playing = true
+
+[node name="AnimatedSprite57" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2686.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite58" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2734.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 5
+playing = true
+
+[node name="AnimatedSprite59" type="AnimatedSprite" parent="Blue Lava"]
+position = Vector2( 2782.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 13 )
+frame = 5
+playing = true
+
+[node name="Sprite" type="Sprite" parent="Blue Lava"]
+position = Vector2( 1096.13, 1100.94 )
+scale = Vector2( 222.509, 46.8393 )
+texture = ExtResource( 11 )
+
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 125.842, 522.8 )
 
@@ -212,49 +770,62 @@ position = Vector2( 125.842, 522.8 )
 
 [node name="Enemy1" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 417.332, 654.8 )
-physics_material_override = SubResource( 1 )
+physics_material_override = SubResource( 14 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 353.832, 612.525 )
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 15 )
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 562.605, 526.53 )
-physics_material_override = SubResource( 3 )
+physics_material_override = SubResource( 16 )
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 646.055, 529.62 )
-physics_material_override = SubResource( 4 )
+physics_material_override = SubResource( 17 )
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 803.69, 461.62 )
-physics_material_override = SubResource( 5 )
+physics_material_override = SubResource( 18 )
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 1293.45, 469.53 )
-physics_material_override = SubResource( 6 )
+physics_material_override = SubResource( 19 )
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 728.8, 344.371 )
-physics_material_override = SubResource( 7 )
+physics_material_override = SubResource( 20 )
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 596.815, 230.191 )
-physics_material_override = SubResource( 8 )
+physics_material_override = SubResource( 21 )
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 1714.86, 270.432 )
-physics_material_override = SubResource( 9 )
+physics_material_override = SubResource( 22 )
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 1773.1, 678.095 )
-physics_material_override = SubResource( 10 )
+physics_material_override = SubResource( 23 )
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 1203.31, 407.557 )
-physics_material_override = SubResource( 11 )
+physics_material_override = SubResource( 24 )
 
 [node name="ParallaxBg" parent="." instance=ExtResource( 8 )]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 12.0
+margin_top = -202.0
+margin_right = 358.0
+margin_bottom = -10.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "This is a simple demo on how to make a platformer game with Godot.\"This version uses physics and the 2D physics engine for motion and collision.\"\"The demo also shows the benefits of using the scene system, where coins,\"enemies and the player are edited separatedly and instanced in the stage.\"\"To edit the base tiles for the  tileset, open the tileset_edit.tscn file and follow \"instructions.\""
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
