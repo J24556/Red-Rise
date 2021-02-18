@@ -1,0 +1,559 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Blue Lava/Base Lava Color - Blue.png" type="Texture" id=1]
+[ext_resource path="res://Blue Lava/blue_lava_bubble.png" type="Texture" id=2]
+[ext_resource path="res://Blue Lava/Blue Lava Rising.gd" type="Script" id=3]
+
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 2 )
+region = Rect2( 112, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 176, 0, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=24]
+animations = [ {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Blue Lava" type="KinematicBody2D"]
+z_index = 10
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.0743256, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 48, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+position = Vector2( 96, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="."]
+position = Vector2( 144, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="."]
+position = Vector2( 192, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="."]
+position = Vector2( 240, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="."]
+position = Vector2( 287.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="."]
+position = Vector2( 335.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="."]
+position = Vector2( 383.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="."]
+position = Vector2( 431.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="."]
+position = Vector2( 479.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite60" type="AnimatedSprite" parent="."]
+position = Vector2( -527.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite61" type="AnimatedSprite" parent="."]
+position = Vector2( -479.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite62" type="AnimatedSprite" parent="."]
+position = Vector2( -431.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite63" type="AnimatedSprite" parent="."]
+position = Vector2( -383.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite64" type="AnimatedSprite" parent="."]
+position = Vector2( -335.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite65" type="AnimatedSprite" parent="."]
+position = Vector2( -287.747, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite66" type="AnimatedSprite" parent="."]
+position = Vector2( -239.986, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite67" type="AnimatedSprite" parent="."]
+position = Vector2( -191.986, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite68" type="AnimatedSprite" parent="."]
+position = Vector2( -143.986, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite69" type="AnimatedSprite" parent="."]
+position = Vector2( -95.9865, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite70" type="AnimatedSprite" parent="."]
+position = Vector2( -47.9864, 700.074 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="."]
+position = Vector2( 527.76, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite13" type="AnimatedSprite" parent="."]
+position = Vector2( 575.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite14" type="AnimatedSprite" parent="."]
+position = Vector2( 623.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite15" type="AnimatedSprite" parent="."]
+position = Vector2( 671.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite16" type="AnimatedSprite" parent="."]
+position = Vector2( 719.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite17" type="AnimatedSprite" parent="."]
+position = Vector2( 767.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite18" type="AnimatedSprite" parent="."]
+position = Vector2( 815.904, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite19" type="AnimatedSprite" parent="."]
+position = Vector2( 863.665, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite20" type="AnimatedSprite" parent="."]
+position = Vector2( 911.665, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite21" type="AnimatedSprite" parent="."]
+position = Vector2( 959.665, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite22" type="AnimatedSprite" parent="."]
+position = Vector2( 1007.66, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite23" type="AnimatedSprite" parent="."]
+position = Vector2( 1055.66, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite24" type="AnimatedSprite" parent="."]
+position = Vector2( 1103.66, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite25" type="AnimatedSprite" parent="."]
+position = Vector2( 1151.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite26" type="AnimatedSprite" parent="."]
+position = Vector2( 1199.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite27" type="AnimatedSprite" parent="."]
+position = Vector2( 1247.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite28" type="AnimatedSprite" parent="."]
+position = Vector2( 1295.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite29" type="AnimatedSprite" parent="."]
+position = Vector2( 1343.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite30" type="AnimatedSprite" parent="."]
+position = Vector2( 1391.53, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite31" type="AnimatedSprite" parent="."]
+position = Vector2( 1439.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 11
+playing = true
+
+[node name="AnimatedSprite32" type="AnimatedSprite" parent="."]
+position = Vector2( 1487.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite33" type="AnimatedSprite" parent="."]
+position = Vector2( 1535.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite34" type="AnimatedSprite" parent="."]
+position = Vector2( 1583.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite35" type="AnimatedSprite" parent="."]
+position = Vector2( 1631.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite36" type="AnimatedSprite" parent="."]
+position = Vector2( 1679.29, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite37" type="AnimatedSprite" parent="."]
+position = Vector2( 1727.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite38" type="AnimatedSprite" parent="."]
+position = Vector2( 1775.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite39" type="AnimatedSprite" parent="."]
+position = Vector2( 1823.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite40" type="AnimatedSprite" parent="."]
+position = Vector2( 1871.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite41" type="AnimatedSprite" parent="."]
+position = Vector2( 1919.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite42" type="AnimatedSprite" parent="."]
+position = Vector2( 1967.43, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite43" type="AnimatedSprite" parent="."]
+position = Vector2( 2015.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite44" type="AnimatedSprite" parent="."]
+position = Vector2( 2063.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite45" type="AnimatedSprite" parent="."]
+position = Vector2( 2111.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite46" type="AnimatedSprite" parent="."]
+position = Vector2( 2159.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite47" type="AnimatedSprite" parent="."]
+position = Vector2( 2207.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite48" type="AnimatedSprite" parent="."]
+position = Vector2( 2255.19, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite49" type="AnimatedSprite" parent="."]
+position = Vector2( 2303.22, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite50" type="AnimatedSprite" parent="."]
+position = Vector2( 2351.22, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite51" type="AnimatedSprite" parent="."]
+position = Vector2( 2399.22, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite52" type="AnimatedSprite" parent="."]
+position = Vector2( 2447.22, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite53" type="AnimatedSprite" parent="."]
+position = Vector2( 2495.22, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite54" type="AnimatedSprite" parent="."]
+position = Vector2( 2542.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite55" type="AnimatedSprite" parent="."]
+position = Vector2( 2590.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite56" type="AnimatedSprite" parent="."]
+position = Vector2( 2638.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite57" type="AnimatedSprite" parent="."]
+position = Vector2( 2686.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite58" type="AnimatedSprite" parent="."]
+position = Vector2( 2734.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite59" type="AnimatedSprite" parent="."]
+position = Vector2( 2782.98, 700 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+frame = 8
+playing = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1096.13, 1100.94 )
+scale = Vector2( 222.509, 46.8393 )
+texture = ExtResource( 1 )
