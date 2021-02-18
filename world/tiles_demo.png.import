@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Base Lava Color - Blue.png-7d5f2ec2c9e85e64e98ab47b2c3d2faf.stex"
+path="res://.import/tiles_demo.png-5c2e400d6e4657024317a5aa96568da7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Lava/Base Lava Color - Blue.png"
-dest_files=[ "res://.import/Base Lava Color - Blue.png-7d5f2ec2c9e85e64e98ab47b2c3d2faf.stex" ]
+source_file="res://world/tiles_demo.png"
+dest_files=[ "res://.import/tiles_demo.png-5c2e400d6e4657024317a5aa96568da7.stex" ]
 
 [params]
 

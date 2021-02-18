@@ -5,7 +5,9 @@ const RUN_SPEED = 150
 const JUMP_SPEED = 350
 const BASE_SPEED = Vector2(RUN_SPEED, JUMP_SPEED)
 const FLOOR_DETECT_DISTANCE = 20.0
+
 var SHOT_DELAY = 0.3 #now why make that a const?
+
 const SHOT_SPEED = 700
 const GUN_PUT_AWAY_TIME = 0.6
 
@@ -41,7 +43,6 @@ func SET_ANGRY(on , instg):
 		
 		
 func _physics_process(_delta):
-	print(angry)
 	var mouse_pos = get_global_mouse_position()
 	var mouse_dir = global_position.direction_to(mouse_pos)
 	var mouse_arm_dir = arm_pivot.global_position.direction_to(mouse_pos)

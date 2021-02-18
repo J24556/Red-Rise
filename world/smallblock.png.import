@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/van_life1.png-a9fe66ba25f831b12b6ff41f32b9bcb9.stex"
+path="res://.import/smallblock.png-93b2392c6d729cfe53fb45c9f6546305.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://van_life1.png"
-dest_files=[ "res://.import/van_life1.png-a9fe66ba25f831b12b6ff41f32b9bcb9.stex" ]
+source_file="res://world/smallblock.png"
+dest_files=[ "res://.import/smallblock.png-93b2392c6d729cfe53fb45c9f6546305.stex" ]
 
 [params]
 

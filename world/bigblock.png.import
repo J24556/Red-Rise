@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blue_lava_bubble.png-71fa91958d265a316ee3f37756a5870a.stex"
+path="res://.import/bigblock.png-4a08ae9fc06fbe0c87949df7f6eb6e60.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Lava/blue_lava_bubble.png"
-dest_files=[ "res://.import/blue_lava_bubble.png-71fa91958d265a316ee3f37756a5870a.stex" ]
+source_file="res://world/bigblock.png"
+dest_files=[ "res://.import/bigblock.png-4a08ae9fc06fbe0c87949df7f6eb6e60.stex" ]
 
 [params]
 
