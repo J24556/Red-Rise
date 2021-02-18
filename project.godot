@@ -69,7 +69,7 @@ gdscript/warnings/unsafe_call_argument=true
 [display]
 
 window/size/width=416
-window/size/height=280
+window/size/height=340
 window/size/test_width=1260
 window/size/test_height=840
 window/dpi/allow_hidpi=true

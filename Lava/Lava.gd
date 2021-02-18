@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPEED = 2
+const SPEED = 10
 const BUBBLE_TIME = .1
 const EDGE = 5
 

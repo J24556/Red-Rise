@@ -13,7 +13,6 @@ script = ExtResource( 3 )
 
 [node name="Pool" type="Sprite" parent="."]
 position = Vector2( 7.62939e-06, 0 )
-z_as_relative = false
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
@@ -27,7 +26,8 @@ shape = SubResource( 1 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 210, 30 )
+position = Vector2( 207.351, 30 )
+scale = Vector2( 1.22955, 1 )
 texture = ExtResource( 2 )
 color = Color( 0.156863, 0.360784, 0.768627, 1 )
 energy = 1.25
