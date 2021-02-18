@@ -46,13 +46,13 @@ func _integrate_forces(s):
 
 		if wall_side != 0 and wall_side != direction:
 			direction = -direction
-			($Sprite as Sprite).scale.x = -direction
+			($Sprite as Sprite).scale.x = direction
 		if direction < 0 and not rc_left.is_colliding() and rc_right.is_colliding():
 			direction = -direction
-			($Sprite as Sprite).scale.x = -direction
+			($Sprite as Sprite).scale.x = direction
 		elif direction > 0 and not rc_right.is_colliding() and rc_left.is_colliding():
 			direction = -direction
-			($Sprite as Sprite).scale.x = -direction
+			($Sprite as Sprite).scale.x = direction
 
 		lv.x = direction * WALK_SPEED
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://enemy/enemy.gd" type="Script" id=1]
-[ext_resource path="res://enemy/enemy.png" type="Texture" id=2]
+[ext_resource path="res://enemy/FBI_Beach_Squad.png" type="Texture" id=2]
 [ext_resource path="res://player/bullet.png" type="Texture" id=3]
 [ext_resource path="res://audio/sound_hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/sound_explode.wav" type="AudioStream" id=5]
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 4 ]
+"values": [ 1 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Explosion:emitting")
@@ -83,9 +83,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-length = 1.25
+length = 0.4
 loop = true
-step = 0.25
+step = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -93,7 +93,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 0 ]
@@ -142,20 +142,22 @@ anims/idle = SubResource( 3 )
 anims/walk = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.852526 )
+scale = Vector2( -1, 1 )
 texture = ExtResource( 2 )
-hframes = 8
-frame = 4
+hframes = 5
+frame = 2
 
 [node name="Shape1" type="CollisionShape2D" parent="."]
-position = Vector2( -0.54036, -1.08072 )
+position = Vector2( -0.143, -4.261 )
 shape = SubResource( 5 )
 
 [node name="Shape2" type="CollisionShape2D" parent="."]
-position = Vector2( 3.24216, 1.62108 )
+position = Vector2( 3.63946, 8.97111 )
 shape = SubResource( 5 )
 
 [node name="Shape3" type="CollisionShape2D" parent="."]
-position = Vector2( -6.2475, 1.76707 )
+position = Vector2( -5.8502, 9.11709 )
 shape = SubResource( 5 )
 
 [node name="RaycastLeft" type="RayCast2D" parent="."]
