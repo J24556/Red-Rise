@@ -5,9 +5,10 @@ var damage = 0
 var velocity = Vector2.ZERO
 
 
-func set_up(vec, dam):
+func set_up(vec, dam, xval = 1):
 	velocity = vec
 	damage = dam
+	$Sprite.scale.x = xval
 
 
 func _physics_process(delta):
@@ -19,7 +20,6 @@ func disable():
 
 
 func _on_Bullet_area_entered(area):
-	print("t")
 	disable()
 
 

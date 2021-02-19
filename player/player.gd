@@ -2,7 +2,7 @@ class_name Player
 extends Actor
 
 const RUN_SPEED = 150
-const JUMP_SPEED = 350
+const JUMP_SPEED = 330
 const SPEED = Vector2(RUN_SPEED, JUMP_SPEED)
 const SHOT_DELAY = 0.3
 const MIN_SHOT_DELAY = 0.05
@@ -39,7 +39,6 @@ onready var gun_arm = $Sprite/ArmPivot/GunArm
 onready var bullet_shoot = $Sprite/ArmPivot/GunArm/BulletShoot
 onready var shot_delay_timer = $ShotDelayTimer
 onready var shoot_anim_timer = $ShootAnimTimer
-onready var sound_jump = $SoundJump
 onready var sound_shoot = $SoundShoot
 onready var light = $Light2D
 
@@ -60,7 +59,7 @@ func _physics_process(delta):
 	
 	var is_jump_interrupted = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	
-	var new_speed = Vector2(SPEED.x + (redness * RED_SPEED_MULT), SPEED.y + redness * RED_JUMP_BONUS)
+	var new_speed = Vector2(SPEED.x + (redness * RED_SPEED_MULT), SPEED.y + (redness * RED_JUMP_BONUS))
 	
 	_velocity = calculate_move_velocity(_velocity, move_dir, new_speed, is_jump_interrupted)
 
@@ -150,7 +149,7 @@ func shoot_bullet(dir):
 	bi.global_rotation = bullet_shoot.global_rotation
 	get_parent().add_child(bi)
 
-	bi.set_up(dir * SHOT_SPEED, DAMAGE)
+	bi.set_up(dir * SHOT_SPEED, DAMAGE, sprite.scale.x)
 
 	sprite_smoke.restart()
 	sound_shoot.play()

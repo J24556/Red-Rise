@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actor.gd"
 }, {
+"base": "AnimationPlayer",
+"class": "BlinkPlayer",
+"language": "GDScript",
+"path": "res://BlinkPlayer.gd"
+}, {
 "base": "Area2D",
 "class": "Bullet",
 "language": "GDScript",
@@ -41,6 +46,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
+"BlinkPlayer": "",
 "Bullet": "",
 "Enemy": "",
 "MovingPlatform": "",
@@ -170,7 +176,7 @@ dash={
 
 [physics]
 
-2d/default_gravity=900
+2d/default_gravity=700
 
 [rasterizer]
 

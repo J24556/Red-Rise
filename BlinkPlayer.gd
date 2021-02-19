@@ -1,4 +1,6 @@
+class_name BlinkPlayer
 extends AnimationPlayer
+
 
 
 onready var timer = $Timer
