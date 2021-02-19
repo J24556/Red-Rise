@@ -24,15 +24,15 @@ onready var rc_left = $RaycastLeft
 onready var rc_right = $RaycastRight
 onready var rc_shoot = $RaycastGun
 
+const  REACT_TIME = .3
+var reacting = false
 var red = preload("res://red/Red.tscn")
 var health = 3
 func damage(amnt):
 	health-=amnt
 	
-	if not rc_shoot.is_colliding():
-		direction = -direction
-		($Sprite as Sprite).scale.x = direction
-		rc_shoot.set_cast_to(Vector2(direction*-VISION_LENGTH,0))
+	reacting = true
+	$react.start(REACT_TIME)
 	
 	if health <= 0:
 		$Sprite.visible = false
@@ -85,6 +85,13 @@ func _integrate_forces(s):
 			get_parent().add_child(bi)
 			bi.set_up(rc_shoot.get_cast_to() * -SHOT_SPEED , 1 )
 
+			($Sprite as Sprite).scale.x = direction
+			
+
+		if $react.is_stopped() and reacting:
+			reacting = false
+			direction = -direction
+			($Sprite as Sprite).scale.x = direction
 		if wall_side != 0 and wall_side != direction:
 			direction = -direction
 			($Sprite as Sprite).scale.x = direction
@@ -94,7 +101,8 @@ func _integrate_forces(s):
 		elif direction > 0 and not rc_right.is_colliding() and rc_left.is_colliding():
 			direction = -direction
 			($Sprite as Sprite).scale.x = direction
- 
+
+			
 		rc_shoot.set_cast_to(Vector2(direction*-VISION_LENGTH,0))
 		lv.x = direction * WALK_SPEED
 
