@@ -291,13 +291,13 @@ position = Vector2( 251.108, 963.71 )
 position = Vector2( 216.363, 934.31 )
 
 [node name="Enemy12" parent="TileMap" instance=ExtResource( 9 )]
-position = Vector2( 31.0459, 441.842 )
+position = Vector2( 36.3913, 447.633 )
 
 [node name="Enemy13" parent="TileMap" instance=ExtResource( 9 )]
-position = Vector2( 27.056, 510.96 )
+position = Vector2( 36.867, 512.149 )
 
 [node name="Enemy14" parent="TileMap" instance=ExtResource( 9 )]
-position = Vector2( 28.0633, 602.094 )
+position = Vector2( 38.7662, 607.445 )
 
 [node name="Enemy15" parent="TileMap" instance=ExtResource( 9 )]
 position = Vector2( 337.651, 908.128 )
