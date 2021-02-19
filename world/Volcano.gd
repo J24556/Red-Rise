@@ -19,3 +19,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+#load inside truck scene
+func _on_Area2D_body_entered(body):
+	print("END")
+	if body is Player:
+		get_tree().change_scene("res://world/vanintro.tscn")

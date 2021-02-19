@@ -165,8 +165,6 @@ func get_new_animation():
 	return animation_new
 
 
-
-
 func _on_RedTimer_timeout():
 	if red_touch > 0:
 		redness = min(redness + 1.4, MAX_RED)
