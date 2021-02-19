@@ -152,9 +152,9 @@ func get_new_animation():
 
 func _on_RedTimer_timeout():
 	if red_touch > 0:
-		redness = min(redness + .1, MAX_RED)
+		redness = min(redness + .6, MAX_RED)
 	else:
-		redness = max(redness - .2, 0)
+		redness = max(redness - .7, 0)
 	
 	if redness > 0:
 		sprite.modulate = Color(1, 1 - (1.0 * redness / MAX_RED), 1 - (1.0 * redness / MAX_RED), 1)

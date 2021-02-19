@@ -1,7 +1,7 @@
 class_name Enemy
 extends RigidBody2D
 
-const WALK_SPEED = 50
+var WALK_SPEED = 50
 const SHOT_SPEED = 15
 const VISION_LENGTH = 100
 var SHOT_DELAY = 0.3
@@ -16,12 +16,35 @@ var state = State.WALKING
 var direction = -1
 var anim = ""
 
-var Bullet_gd = preload("res://player/player_bullet.gd")
+
+var Bullet_gd = preload("res://player/bullet.gd")
 var Bullet = preload("res://player/PlayerBullet.tscn") #change to player damaging tscn
 onready var shot_delay_timer = $ShotDelay
 onready var rc_left = $RaycastLeft
 onready var rc_right = $RaycastRight
 onready var rc_shoot = $RaycastGun
+
+var red = preload("res://red/Red.tscn")
+var cpng = preload("res://enemy/FBI_Beach_Squad_Down.png")
+var health = 3
+func damage(amnt):
+	health-=amnt
+	if health <= 0:
+		$Sprite.set_texture(cpng)
+		$Sprite.set_hframes(1)
+		rc_shoot.enabled = false
+		$Shape1.position.y = 9
+		WALK_SPEED = 0
+	else:
+		for i in range(0,7):
+			var blood = red.instance()
+			get_parent().add_child(blood)
+			randomize()
+			
+			blood.global_position = Vector2(self.global_position.x + rand_range(-20,20),
+			self.global_position.y + rand_range(-20,20))
+			
+			
 
 func _integrate_forces(s):
 	var lv = s.get_linear_velocity()
@@ -55,7 +78,7 @@ func _integrate_forces(s):
 			var bi = Bullet.instance()
 			bi.global_position = rc_shoot.global_position
 			get_parent().add_child(bi)
-			bi.set_velocity(rc_shoot.get_cast_to() * -SHOT_SPEED)
+			bi.set_up(rc_shoot.get_cast_to() * -SHOT_SPEED , 1 )
 
 		if wall_side != 0 and wall_side != direction:
 			direction = -direction

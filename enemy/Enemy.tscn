@@ -146,10 +146,10 @@ self_modulate = Color( 1, 1, 1, 0.852526 )
 scale = Vector2( -1, 1 )
 texture = ExtResource( 2 )
 hframes = 5
-frame = 2
+frame = 1
 
 [node name="Shape1" type="CollisionShape2D" parent="."]
-position = Vector2( -0.143, -4.261 )
+position = Vector2( 0, -4.261 )
 shape = SubResource( 5 )
 
 [node name="Shape2" type="CollisionShape2D" parent="."]
