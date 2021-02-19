@@ -2,8 +2,8 @@ class_name Enemy
 extends RigidBody2D
 
 var WALK_SPEED = 50
-const SHOT_SPEED = 15
-const VISION_LENGTH = 100
+const SHOT_SPEED = 2
+const VISION_LENGTH = 500
 var SHOT_DELAY = 0.3
 
 enum State {
@@ -28,6 +28,12 @@ var red = preload("res://red/Red.tscn")
 var health = 3
 func damage(amnt):
 	health-=amnt
+	
+	if not rc_shoot.is_colliding():
+		direction = -direction
+		($Sprite as Sprite).scale.x = direction
+		rc_shoot.set_cast_to(Vector2(direction*-VISION_LENGTH,0))
+	
 	if health <= 0:
 		$Sprite.visible = false
 		$Sprite2.visible = true
