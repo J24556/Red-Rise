@@ -147,6 +147,7 @@ func shoot_bullet(dir):
 	var bi = bullet.instance()
 
 	bi.global_position = bullet_shoot.global_position
+	bi.global_rotation = bullet_shoot.global_rotation
 	get_parent().add_child(bi)
 
 	bi.set_up(dir * SHOT_SPEED, DAMAGE)
