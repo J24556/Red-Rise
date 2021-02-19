@@ -18,7 +18,7 @@ var anim = ""
 
 
 var Bullet_gd = preload("res://player/bullet.gd")
-var Bullet = preload("res://player/PlayerBullet.tscn") #change to player damaging tscn
+var Bullet = preload("res://enemy/EnemyBullet.tscn") #change to player damaging tscn
 onready var shot_delay_timer = $ShotDelay
 onready var rc_left = $RaycastLeft
 onready var rc_right = $RaycastRight
@@ -45,7 +45,7 @@ func damage(amnt):
 			self.global_position.y + rand_range(-20,20))
 			
 			
-
+var en_bullet = preload("res://enemy/FIBULLET.png")
 func _integrate_forces(s):
 	var lv = s.get_linear_velocity()
 	var new_anim = anim
