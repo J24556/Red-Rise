@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Volcano Music - More mathy PH.wav-4dc931daaa8b263e9bb6774f69f95782.sample"
+
+[deps]
+
+source_file="res://Volcano Music - More mathy PH.wav"
+dest_files=[ "res://.import/Volcano Music - More mathy PH.wav-4dc931daaa8b263e9bb6774f69f95782.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://world/van_life1.png" type="Texture" id=2]
+[ext_resource path="res://world/vanintro.gd" type="Script" id=3]
 
 [node name="World" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Van" type="StaticBody2D" parent="."]
 
@@ -16,3 +18,15 @@ polygon = PoolVector2Array( 357.052, 83.7651, 373.916, 136.517, 356.989, 136.962
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 226.366, 141.229 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 157.885
+margin_top = 92.5276
+margin_right = 283.885
+margin_bottom = 123.528
+text = "You drove to Safety!
+Thanks for Playing!"
+__meta__ = {
+"_edit_use_anchors_": false
+}

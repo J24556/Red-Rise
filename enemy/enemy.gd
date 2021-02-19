@@ -100,15 +100,15 @@ func _integrate_forces(s):
 		if wall_side != 0 and wall_side != direction:
 			direction = -direction
 			($Sprite as Sprite).scale.x = direction
-			turnTimer.start(REACT_TIME)
+			turnTimer.start(REACT_TIME * .5)
 		if direction < 0 and not rc_left.is_colliding() and rc_right.is_colliding():
 			direction = -direction
 			($Sprite as Sprite).scale.x = direction
-			turnTimer.start(REACT_TIME)
+			turnTimer.start(REACT_TIME * .5)
 		elif direction > 0 and not rc_right.is_colliding() and rc_left.is_colliding():
 			direction = -direction
 			($Sprite as Sprite).scale.x = direction
-			turnTimer.start(REACT_TIME)
+			turnTimer.start(REACT_TIME * .5)
 
 			
 		rc_shoot.set_cast_to(Vector2(direction*-VISION_LENGTH,0))

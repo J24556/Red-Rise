@@ -78,7 +78,7 @@ func _physics_process(delta):
 
 	var shoot_anim = not shoot_anim_timer.is_stopped()
 
-	ammotext.set_text("Bullets: " + String(ammo))
+	ammotext.set_text("Bullets: " + String(ammo) + "\nStop Firing to Reload")
 	var is_shooting = false
 	if Input.is_action_pressed("shoot"):
 		shoot_anim_timer.start(GUN_PUT_AWAY_TIME)
