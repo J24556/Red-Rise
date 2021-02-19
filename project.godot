@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://player/player_bullet.gd"
 }, {
-"base": "Area2D",
-"class": "Coin",
-"language": "GDScript",
-"path": "res://coin/coin.gd"
-}, {
 "base": "RigidBody2D",
 "class": "Enemy",
 "language": "GDScript",
@@ -38,14 +33,19 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://player/player.gd"
+}, {
+"base": "Area2D",
+"class": "Red",
+"language": "GDScript",
+"path": "res://red/red.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
 "Bullet": "",
-"Coin": "",
 "Enemy": "",
 "MovingPlatform": "",
-"Player": ""
+"Player": "",
+"Red": ""
 }
 
 [application]

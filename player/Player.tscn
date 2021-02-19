@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/characteronearm.png" type="Texture" id=2]
 [ext_resource path="res://player/bullet.png" type="Texture" id=3]
 [ext_resource path="res://player/Bullet.wav" type="AudioStream" id=4]
 [ext_resource path="res://player/Chads_GAT.png" type="Texture" id=5]
+[ext_resource path="res://player/radial_gradient.png" type="Texture" id=6]
 [ext_resource path="res://audio/sound_jump.wav" type="AudioStream" id=9]
 
 [sub_resource type="Gradient" id=1]
@@ -163,8 +164,16 @@ cast_to = Vector2( 0, 17 )
 [node name="ShotDelayTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="AngerTime" type="Timer" parent="."]
-wait_time = 2.0
-
 [node name="ShootAnimTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 6 )
+color = Color( 1, 0, 0, 1 )
+energy = 0.0
+
+[node name="RedTimer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+[connection signal="timeout" from="RedTimer" to="." method="_on_RedTimer_timeout"]
