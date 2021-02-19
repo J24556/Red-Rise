@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://player/player_bullet.gd"
+"path": "res://player/bullet.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Enemy",

@@ -1,22 +1,21 @@
 class_name Bullet
 extends Area2D
 
-var disabled = false
+var damage = 0
 var velocity = Vector2.ZERO
 
-func set_velocity(vec):
+
+func set_up(vec, dam):
 	velocity = vec
+	damage = dam
+
 
 func _physics_process(delta):
 	position += velocity * delta
 
+
 func disable():
 	queue_free()
-	#if disabled:
-	#	return
-
-	#($AnimationPlayer as AnimationPlayer).play("shutdown")
-	#disabled = true
 
 
 func _on_Bullet_area_entered(area):
@@ -24,4 +23,6 @@ func _on_Bullet_area_entered(area):
 
 
 func _on_Bullet_body_entered(body):
+	if body.has_method("damage"):
+		body.call("damage", damage)
 	disable()

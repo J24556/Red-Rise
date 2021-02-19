@@ -12,7 +12,9 @@ export (bool) var falls = true
 onready var gravity = ProjectSettings.get("physics/2d/default_gravity")
 
 
-var health = max_health 
+onready var health = max_health
+ 
+
 var _velocity = Vector2.ZERO
 
 

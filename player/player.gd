@@ -11,6 +11,8 @@ const RED_SHOT_DELAY_MULT = .01
 const FLOOR_DETECT_DISTANCE = 20.0
 const MAX_RED = 20
 
+const DAMAGE = 1
+
 
 const SHOT_SPEED = 700
 const GUN_PUT_AWAY_TIME = 0.6
@@ -131,7 +133,7 @@ func shoot_bullet(dir):
 	bi.global_position = bullet_shoot.global_position
 	get_parent().add_child(bi)
 
-	bi.set_velocity(dir * SHOT_SPEED)
+	bi.set_up(dir * SHOT_SPEED, DAMAGE)
 
 	sprite_smoke.restart()
 	sound_shoot.play()
