@@ -19,6 +19,7 @@ func disable():
 
 
 func _on_Bullet_area_entered(area):
+	print("t")
 	disable()
 
 

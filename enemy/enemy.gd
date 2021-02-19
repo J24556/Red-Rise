@@ -25,13 +25,12 @@ onready var rc_right = $RaycastRight
 onready var rc_shoot = $RaycastGun
 
 var red = preload("res://red/Red.tscn")
-var cpng = preload("res://enemy/FBI_Beach_Squad_Down.png")
 var health = 3
 func damage(amnt):
 	health-=amnt
 	if health <= 0:
-		$Sprite.set_texture(cpng)
-		$Sprite.set_hframes(1)
+		$Sprite.visible = false
+		$Sprite2.visible = true
 		rc_shoot.enabled = false
 		$Shape1.position.y = 9
 		WALK_SPEED = 0

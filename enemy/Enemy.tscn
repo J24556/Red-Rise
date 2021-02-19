@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://enemy/enemy.gd" type="Script" id=1]
 [ext_resource path="res://enemy/FBI_Beach_Squad.png" type="Texture" id=2]
 [ext_resource path="res://player/bullet.png" type="Texture" id=3]
 [ext_resource path="res://audio/sound_hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/sound_explode.wav" type="AudioStream" id=5]
+[ext_resource path="res://enemy/FBI_Beach_Squad_Down.png" type="Texture" id=6]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -148,6 +149,12 @@ texture = ExtResource( 2 )
 hframes = 5
 frame = 1
 
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.852526 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 6 )
+
 [node name="Shape1" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -4.261 )
 shape = SubResource( 5 )
@@ -166,7 +173,7 @@ rotation = 3.14159
 scale = Vector2( 1, -1 )
 enabled = true
 cast_to = Vector2( 50, 0 )
-collision_mask = 37
+collision_mask = 36
 
 [node name="RaycastLeft" type="RayCast2D" parent="."]
 position = Vector2( -14, -4.672 )

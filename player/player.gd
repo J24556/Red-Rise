@@ -22,8 +22,12 @@ var sprite_no_arm = preload("res://player/characteronearm.png")
 var sprite_chad_when_stock_go_down = preload("res://player/chad_in_the_red.png")
 var sprite_with_arm = preload("res://player/charactertwoarms.png")
 
+const RED_JUMP_BONUS = 10
 var redness = 0
 var red_touch = 0
+
+const MAX_AMMO = 14
+var ammo = MAX_AMMO
 
 onready var platform_detector = $PlatformDetector
 onready var platform_detector2 = $PlatformDetector2
@@ -40,6 +44,11 @@ onready var sound_shoot = $SoundShoot
 onready var light = $Light2D
 
 
+
+func die():
+	get_tree().reload_current_scene()
+
+
 func _physics_process(delta):
 
 	#GET INPUT AND STATUS
@@ -51,7 +60,7 @@ func _physics_process(delta):
 	
 	var is_jump_interrupted = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	
-	var new_speed = Vector2(SPEED.x + (redness * RED_SPEED_MULT), SPEED.y)
+	var new_speed = Vector2(SPEED.x + (redness * RED_SPEED_MULT), SPEED.y + redness * RED_JUMP_BONUS)
 	
 	_velocity = calculate_move_velocity(_velocity, move_dir, new_speed, is_jump_interrupted)
 
@@ -60,13 +69,13 @@ func _physics_process(delta):
 
 	var shoot_anim = not shoot_anim_timer.is_stopped()
 
+	$ammo.set_text(String(ammo))
 	var is_shooting = false
 	if Input.is_action_pressed("shoot"):
 		shoot_anim_timer.start(GUN_PUT_AWAY_TIME)
 		if shot_delay_timer.is_stopped():
 			is_shooting = true
 
- 
 	#ACT
 
 	_velocity = move_and_slide_with_snap(
@@ -82,11 +91,14 @@ func _physics_process(delta):
 	if shoot_anim:
 		sprite.texture = sprite_no_arm
 		gun_arm.visible = true
+		$ammo.visible = true
 		if mouse_dir.x != 0:
 			sprite.scale.x = 1 if mouse_dir.x > 0 else -1
 	else:
 		sprite.texture = sprite_with_arm
 		gun_arm.visible = false
+		$ammo.visible = false
+		ammo = MAX_AMMO #weapon is reloaded when putaway
 		if move_dir.x != 0:
 			sprite.scale.x = 1 if move_dir.x > 0 else -1
 
@@ -128,6 +140,10 @@ func calculate_move_velocity(
 
 
 func shoot_bullet(dir):
+	if ammo <= 0:
+		return	
+	ammo-=1
+
 	var bi = bullet.instance()
 
 	bi.global_position = bullet_shoot.global_position
@@ -152,7 +168,7 @@ func get_new_animation():
 
 func _on_RedTimer_timeout():
 	if red_touch > 0:
-		redness = min(redness + .6, MAX_RED)
+		redness = min(redness + 1.4, MAX_RED)
 	else:
 		redness = max(redness - .7, 0)
 	
