@@ -1,11 +1,11 @@
 extends Area2D
 
-const SPEED = 10
+const SPEED = 30
 const BUBBLE_TIME = .1
 const EDGE = 5
 
 onready var LavaBubble = preload("res://Lava/LavaBubble.tscn")
-
+onready var player = preload("res://player/Player.tscn")
 onready var timer = $Timer
 onready var pool = $Pool
 
@@ -25,3 +25,8 @@ func spawn_bubble():
 
 func _on_Timer_timeout():
 	spawn_bubble()
+
+
+func _on_Lava_body_entered(body):
+	if body.has_method("damage"):
+		body.call("damage", 10)
