@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://world/volcanobackground.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://world/purple_blocks.png" type="Texture" id=4]
 [ext_resource path="res://world/Volcano.gd" type="Script" id=5]
 [ext_resource path="res://enemy/EyeBat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://platform/CrumblingPlatform.tscn" type="PackedScene" id=7]
 [ext_resource path="res://enemy/Bat.tscn" type="PackedScene" id=8]
 [ext_resource path="res://enemy/AgentWalker.tscn" type="PackedScene" id=9]
 [ext_resource path="res://world/van_life_out.png" type="Texture" id=10]
@@ -196,8 +197,9 @@ extents = Vector2( 61.4973, 88.9807 )
 script = ExtResource( 5 )
 
 [node name="background" type="TextureRect" parent="."]
+margin_top = 0.445435
 margin_right = 420.0
-margin_bottom = 2000.0
+margin_bottom = 2000.45
 texture = ExtResource( 2 )
 stretch_mode = 2
 __meta__ = {
@@ -251,7 +253,7 @@ position = Vector2( 150.675, 664.378 )
 position = Vector2( 121.309, 662.791 )
 
 [node name="Enemy11" parent="Cops" instance=ExtResource( 9 )]
-position = Vector2( 225.379, 808.086 )
+position = Vector2( 228.943, 814.768 )
 
 [node name="Enemy4" parent="Cops" instance=ExtResource( 9 )]
 position = Vector2( 119.387, 1132.72 )
@@ -273,9 +275,6 @@ position = Vector2( 307.4, 1614.09 )
 
 [node name="Enemy2" parent="Cops" instance=ExtResource( 9 )]
 position = Vector2( 145.92, 1454.57 )
-
-[node name="Enemy3" parent="Cops" instance=ExtResource( 9 )]
-position = Vector2( 114.663, 960.75 )
 
 [node name="Bats" type="Node2D" parent="."]
 
@@ -308,6 +307,30 @@ position = Vector2( 208, 1508 )
 
 [node name="Platforms" type="Node2D" parent="."]
 
+[node name="CrumblingPlatform" parent="Platforms" instance=ExtResource( 7 )]
+position = Vector2( 119.856, 542.165 )
+
+[node name="CrumblingPlatform2" parent="Platforms" instance=ExtResource( 7 )]
+position = Vector2( 180.401, 584.21 )
+
+[node name="CrumblingPlatform3" parent="Platforms" instance=ExtResource( 7 )]
+position = Vector2( 291.399, 650.221 )
+
+[node name="CrumblingPlatform4" parent="Platforms" instance=ExtResource( 7 )]
+position = Vector2( 237.161, 611.119 )
+
 [node name="EyeBat" parent="." instance=ExtResource( 6 )]
-position = Vector2( 283.936, 1720.57 )
+position = Vector2( 138.72, 1574.02 )
+
+[node name="EyeBat2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 228.255, 1319.67 )
+
+[node name="EyeBat4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 124.911, 854.171 )
+
+[node name="EyeBat5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 284.004, 532.397 )
+
+[node name="EyeBat3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 39.8298, 1361.98 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
