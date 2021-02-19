@@ -2,13 +2,15 @@ extends StaticBody2D
 
 const HANG_TIME = .5
 
+export (bool) var crumbling = false
+
 onready var animation_player = $AnimationPlayer
 onready var timer = $Timer
 
 var triggered = false
 
 func stand_on():
-	if not triggered:
+	if crumbling and not triggered:
 		triggered = true
 		animation_player.play("crack")
 		timer.start(HANG_TIME)

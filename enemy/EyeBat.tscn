@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://enemy/Bat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemy/EyeBat.gd" type="Script" id=2]
+[ext_resource path="res://enemy/flyingeye.png" type="Texture" id=3]
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform float white;
+
+void fragment() {
+    vec4 texture_color = texture(TEXTURE, UV);
+    COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), white), texture_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = SubResource( 3 )
+shader_param/white = 0.0
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 140.045
+
+[node name="EyeBat" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+max_health = 5
+falls = true
+
+[node name="Sprite" parent="." index="3"]
+material = SubResource( 4 )
+texture = ExtResource( 3 )
+frame = 0
+
+[node name="Looker" type="Area2D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Looker" index="0"]
+visible = false
+shape = SubResource( 5 )
+
+[node name="ShootTimer" type="Timer" parent="." index="6"]
+one_shot = true
+[connection signal="body_entered" from="Looker" to="." method="_on_Looker_body_entered"]
+[connection signal="body_exited" from="Looker" to="." method="_on_Looker_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

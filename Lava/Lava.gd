@@ -28,5 +28,5 @@ func _on_Timer_timeout():
 
 
 func _on_Lava_body_entered(body):
-	if body.has_method("damage"):
-		body.call("damage", 10)
+	if body.has_method("die"):
+		body.call_deferred("die")

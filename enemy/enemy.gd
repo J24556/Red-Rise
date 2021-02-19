@@ -2,9 +2,9 @@ class_name Enemy
 extends RigidBody2D
 
 var WALK_SPEED = 50
-const SHOT_SPEED = 1.5
+const SHOT_SPEED = .3
 const VISION_LENGTH = 500
-var SHOT_DELAY = 0.3
+var SHOT_DELAY = 1
 
 enum State {
 	WALKING,
@@ -45,6 +45,7 @@ func damage(amnt):
 		$Shape1.set_deferred("disabled", true)
 		WALK_SPEED = 0
 		gravity_scale = 0
+		$Weapon/Shape2.set_deferred("disabled", true)
 	else:
 		$BlinkPlayer.blink()
 
@@ -124,7 +125,7 @@ func fire_bullet():
 	var bi = Bullet.instance()
 	bi.global_position = bullet_pos.global_position
 	get_parent().add_child(bi)
-	bi.set_up(rc_shoot.get_cast_to() * -SHOT_SPEED , 1, $Sprite.scale.x )
+	bi.set_up(rc_shoot.get_cast_to() * -SHOT_SPEED , 1, $Sprite.scale.x * .5 )
 
 
 

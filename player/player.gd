@@ -22,11 +22,11 @@ var sprite_no_arm = preload("res://player/characteronearm.png")
 var sprite_chad_when_stock_go_down = preload("res://player/chad_in_the_red.png")
 var sprite_with_arm = preload("res://player/charactertwoarms.png")
 
-const RED_JUMP_BONUS = 10
+const RED_JUMP_BONUS = 4
 var redness = 0
 var red_touch = 0
 
-const MAX_AMMO = 14
+const MAX_AMMO = 30
 var ammo = MAX_AMMO
 
 onready var platform_detector = $PlatformDetector
@@ -41,14 +41,24 @@ onready var shot_delay_timer = $ShotDelayTimer
 onready var shoot_anim_timer = $ShootAnimTimer
 onready var sound_shoot = $SoundShoot
 onready var light = $Light2D
+onready var ammotext = $CanvasLayer/ammo
+onready var healthbar = $CanvasLayer/ProgressBar
+onready var blinkPlayer = $BlinkPlayer
 
+
+func stagger():
+	healthbar.value = health
+	blinkPlayer.blink(2)
 
 
 func die():
 	get_tree().reload_current_scene()
 
 
+
+
 func _physics_process(delta):
+	invincible = blinkPlayer.is_active()
 
 	#GET INPUT AND STATUS
 	var mouse_pos = get_global_mouse_position()
@@ -68,7 +78,7 @@ func _physics_process(delta):
 
 	var shoot_anim = not shoot_anim_timer.is_stopped()
 
-	$ammo.set_text(String(ammo))
+	ammotext.set_text("Bullets: " + String(ammo))
 	var is_shooting = false
 	if Input.is_action_pressed("shoot"):
 		shoot_anim_timer.start(GUN_PUT_AWAY_TIME)
@@ -90,13 +100,13 @@ func _physics_process(delta):
 	if shoot_anim:
 		sprite.texture = sprite_no_arm
 		gun_arm.visible = true
-		$ammo.visible = true
+		ammotext.visible = true
 		if mouse_dir.x != 0:
 			sprite.scale.x = 1 if mouse_dir.x > 0 else -1
 	else:
 		sprite.texture = sprite_with_arm
 		gun_arm.visible = false
-		$ammo.visible = false
+		ammotext.visible = false
 		ammo = MAX_AMMO #weapon is reloaded when putaway
 		if move_dir.x != 0:
 			sprite.scale.x = 1 if move_dir.x > 0 else -1
@@ -168,7 +178,7 @@ func _on_RedTimer_timeout():
 	if red_touch > 0:
 		redness = min(redness + 1.4, MAX_RED)
 	else:
-		redness = max(redness - .7, 0)
+		redness = max(redness - .3, 0)
 	
 	if redness > 0:
 		sprite.modulate = Color(1, 1 - (1.0 * redness / MAX_RED), 1 - (1.0 * redness / MAX_RED), 1)

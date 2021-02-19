@@ -16,7 +16,7 @@ onready var health = max_health
  
 
 var _velocity = Vector2.ZERO
-
+var invincible = false
 
 func _physics_process(delta):
 	if falls:
@@ -24,6 +24,8 @@ func _physics_process(delta):
 
 
 func damage(val):
+	if invincible:
+		return
 	health -= val
 	if health <= 0:
 		if has_method("die"):

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tiles_demo.png-5c2e400d6e4657024317a5aa96568da7.stex"
+path="res://.import/flyingeye.png-94dd74edb2c0c3706cdcb0e8aa0ca880.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/tiles_demo.png"
-dest_files=[ "res://.import/tiles_demo.png-5c2e400d6e4657024317a5aa96568da7.stex" ]
+source_file="res://enemy/flyingeye.png"
+dest_files=[ "res://.import/flyingeye.png-94dd74edb2c0c3706cdcb0e8aa0ca880.stex" ]
 
 [params]
 
